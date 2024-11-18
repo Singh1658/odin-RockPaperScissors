@@ -41,28 +41,41 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
-    humanScore = 0;  // Reset scores at the start of each game
-    computerScore = 0;
+const buttons = document.querySelectorAll("button");
 
-    for (let i = 0; i < 5; i++) {
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        alert("event being triggered")
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
-        
         playRound(humanSelection, computerSelection);
-        console.log(`Score after round ${i + 1}: Human - ${humanScore}, Computer - ${computerScore}`);
-    }
+    }); 
+})
+    
 
-    if (humanScore > computerScore) {
-        console.log("Congratulations! You won the game!");
-    } else if (computerScore > humanScore) {
-        console.log("You lost the game. Better luck next time!");
-    } else {
-        console.log("The game is a tie!");
-    }
-}
 
-playGame();
+// function playGame() {
+//     humanScore = 0;  // Reset scores at the start of each game
+//     computerScore = 0;
+
+//     for (let i = 0; i < 5; i++) {
+//         const humanSelection = getHumanChoice();
+//         const computerSelection = getComputerChoice();
+        
+//         playRound(humanSelection, computerSelection);
+//         console.log(`Score after round ${i + 1}: Human - ${humanScore}, Computer - ${computerScore}`);
+//     }
+
+//     if (humanScore > computerScore) {
+//         console.log("Congratulations! You won the game!");
+//     } else if (computerScore > humanScore) {
+//         console.log("You lost the game. Better luck next time!");
+//     } else {
+//         console.log("The game is a tie!");
+//     }
+// }
+
+//playGame();
 
 
 
