@@ -16,66 +16,67 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function getHumanChoice() {
-    let humanChoiceQuest = prompt("Select Rock, Paper, or Scissors");
-    return humanChoiceQuest;    
-}
 
 
 function playRound(humanChoice, computerChoice) {
     humanChoice = humanChoice.toLowerCase();
     computerChoice = computerChoice.toLowerCase();
 
+    const tieMessage = document.querySelector('#tieMessage'); // Select the tie message element
+
+    
+
     if (humanChoice === computerChoice) {
-        console.log("It's a tie! Both chose " + humanChoice);
+        tieMessage.textContent = `It's a Tie. Both Chose ${humanChoice}`;
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "scissors" && computerChoice === "paper") ||
         (humanChoice === "paper" && computerChoice === "rock")
     ) {
+        tieMessage.textContent = "";
         humanScore++;
-        console.log("You win this round! " + humanChoice + " beats " + computerChoice);
+        
+        //console.log("You win this round! " + humanChoice + " beats " + computerChoice);
     } else {
+        tieMessage.textContent = "";
         computerScore++;
-        console.log("You lose this round! " + computerChoice + " beats " + humanChoice);
+        //console.log("You lose this round! " + computerChoice + " beats " + humanChoice);
+    }
+    if (humanScore == 5) {
+        alert("Congratulations! You won the game!");
+    }
+    if (computerScore == 5) {
+        alert("You lost the game. Better luck next time!");
     }
 }
 
-const buttons = document.querySelectorAll("button");
 
-buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        alert("event being triggered")
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }); 
-})
     
 
 
-// function playGame() {
-//     humanScore = 0;  // Reset scores at the start of each game
-//     computerScore = 0;
+function playGame() {
+    humanScore = 0;  // Reset scores at the start of each game
+    computerScore = 0;
+    const buttons = document.querySelectorAll("button");
+    const humanScoreDisplay = document.querySelector('#HumanScore');
+    const computerScoreDisplay = document.querySelector('#ComputerScore');
 
-//     for (let i = 0; i < 5; i++) {
-//         const humanSelection = getHumanChoice();
-//         const computerSelection = getComputerChoice();
-        
-//         playRound(humanSelection, computerSelection);
-//         console.log(`Score after round ${i + 1}: Human - ${humanScore}, Computer - ${computerScore}`);
-//     }
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            
+            const humanSelection = button.id;
+            const computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+            humanScoreDisplay.textContent = "Human Score: " + humanScore;
+            computerScoreDisplay.textContent = "Computer Score: " + computerScore;
+                                    
+        }); 
+    })  
 
-//     if (humanScore > computerScore) {
-//         console.log("Congratulations! You won the game!");
-//     } else if (computerScore > humanScore) {
-//         console.log("You lost the game. Better luck next time!");
-//     } else {
-//         console.log("The game is a tie!");
-//     }
-// }
+    
+}
 
-//playGame();
+playGame();
 
 
 
