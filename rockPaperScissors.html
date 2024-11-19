@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="rockPaperScissors.css">
+    <title>Rock Paper Scissors Game</title>
 </head>
 <body>
+    <header
+        style="display: flex;
+        justify-content: center;
+        padding: 20px;">ROCK PAPER SCISSORS GAME
+    </header>
+    <div id= "container-class" class="container" style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: center;">
+        <button id="ROCK">ROCK</button>
+        <button id="PAPER">PAPER</button>
+        <button id="SCISSORS">SCISSORS</button>
+    </div>
+    <div id="score-container" class="score-container">
+        <div id="HumanScore" class="HumanScore"></div>
+        <div id="ComputerScore" class="ComputerScore"></div>
+        <div id="tieMessage" class="tieMessage"></div>
+    </div>
+    
     <script  src="rockPaperScissors.js">
         // Your JavaScript goes here!
        
-      </script>
+    </script>
 </body>
 </html>
